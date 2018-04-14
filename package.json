@@ -1,8 +1,8 @@
 {
   "name": "fieldstack",
   "version": "0.0.5",
-  "description": "A declarative form engine",
-  "main": "lib/index.js",
+  "description": "A declarative library for building flexible forms",
+  "main": "./lib/index.js",
   "repository": "https://github.com/theEMFcompany/frontflip.git",
   "author": "buchanora",
   "license": "MIT",
@@ -17,6 +17,7 @@
   },
   "peerDependencies": {
     "react": ">=15",
+    "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2"
   },
@@ -47,6 +48,7 @@
     "raf": "^3.4.0",
     "react": "^16.2.0",
     "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
     "rollup": "^0.50.1",
@@ -55,7 +57,6 @@
     "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^3.0.0",
-    "semver": "^5.5.0"
   },
   "browserify": {
     "transform": [
