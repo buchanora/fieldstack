@@ -1,6 +1,6 @@
 {
   "name": "fieldstack",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A declarative library for building flexible forms",
   "main": "lib/index.js",
   "repository": "https://github.com/frontflip.git",
