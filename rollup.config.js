@@ -4,17 +4,31 @@ import ugliest from "uglify-es";
 import replace from "rollup-plugin-replace";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
+import sass from 'rollup-plugin-sass';
+import autoprefixer from 'autoprefixer';
+import postcss from 'postcss';
+import {writeFileSync} from 'fs';
+import path from 'path';
 
 const config = {
   input: "src/index.js",
   name: "FieldStack",
   globals: {
-    react: "React",
+    'react': 'React',
     'react-redux': 'react-redux',
+    'react-dom': 'react-dom',
     'redux': 'redux'
   },
-  external: ["react", "redux" ,"react-redux"],
+  external: ["react", "redux" ,"react-redux", "react-dom"],
   plugins: [
+    sass({
+      output(styles, styleNodes) {
+        writeFileSync(path.resolve(__dirname, 'lib', 'styles.css'), styles);
+      },
+      processor: css => postcss([autoprefixer])
+        .process(css, { from: 'styles.css', to: 'styles.out.css' })
+        .then(result => result.css)
+    }),
     babel({
       exclude: "node_modules/**"
     }),

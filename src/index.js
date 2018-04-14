@@ -1,8 +1,8 @@
-
+import './style.scss';
 import {serializeDraftState, parseDraftState} from './components/DraftField/';
 import {
-  SelectFieldSet,
-   MultiSelectFieldSet, 
+  SelectFieldSet as SFS,
+  MultiSelectFieldSet as MSFS, 
   SelectOption, 
   SelectListItem, 
   Checker, 
@@ -17,8 +17,8 @@ export MultiLineField from './components/MultiLineField/';
 export OptionTextField from './components/OptionTextField/';
 export RangeSelect from './components/RangeSelect/';
 export SelectButton from './components/SelectButton/';
-export {SelectFieldSet} from './components/Select/';
-export {MultiSelectFieldSet} from './components/Select/';
+export const SelectFieldSet = SFS;
+export const MultiSelectFieldSet = MSFS;
 export SuggestionField from './components/SuggestionField/';
 export TextField from './components/TextField/';
 export TimeField from './components/TimeField/';
