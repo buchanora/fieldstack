@@ -5,6 +5,7 @@ import replace from "rollup-plugin-replace";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 import sass from 'rollup-plugin-sass';
+import stripCode from "rollup-plugin-strip-code"
 import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import {writeFileSync} from 'fs';
@@ -25,6 +26,7 @@ const config = {
       output(styles, styleNodes) {
         writeFileSync(path.resolve(__dirname, 'lib', 'styles.css'), styles);
       },
+      insert: true,
       processor: css => postcss([autoprefixer])
         .process(css, { from: 'styles.css', to: 'styles.out.css' })
         .then(result => result.css)
@@ -56,6 +58,10 @@ const config = {
     }),
     replace({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+    }),
+    stripCode({
+      start_comment: 'START.DEV_ONLY',
+      end_comment: 'END.DEV_ONLY'
     })
   ]
 };

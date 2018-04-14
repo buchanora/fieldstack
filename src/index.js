@@ -1,4 +1,3 @@
-import './style.scss';
 import {serializeDraftState, parseDraftState} from './components/DraftField/';
 import {
   SelectFieldSet as SFS,
@@ -17,12 +16,22 @@ export MultiLineField from './components/MultiLineField/';
 export OptionTextField from './components/OptionTextField/';
 export RangeSelect from './components/RangeSelect/';
 export SelectButton from './components/SelectButton/';
-export const SelectFieldSet = SFS;
-export const MultiSelectFieldSet = MSFS;
 export SuggestionField from './components/SuggestionField/';
 export TextField from './components/TextField/';
 export TimeField from './components/TimeField/';
 export UploadField from './components/UploadField/';
+
+//reducers
+export formReducer from './reducers';
+
+//connectors
+export reduxConnect from './connectors/reduxConnect';
+
+export FieldStack from './components/FieldStack/';
+
+export const SelectFieldSet = SFS;
+export const MultiSelectFieldSet = MSFS;
+
 export const elements = {
   SelectOption,
   SelectListItem,
@@ -33,11 +42,3 @@ export const helpers = {
   serializeDraftState,
   parseDraftState
 }
-
-//reducers
-export formReducer from './reducers';
-
-//connectors
-export reduxConnect from './connectors/reduxConnect';
-
-export FieldStack from './components/FieldStack/';
