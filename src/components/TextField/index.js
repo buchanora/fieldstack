@@ -55,6 +55,7 @@ export default function TextField (props) {
 
 TextField.defaultProps = {
     className: '',
+    value: '',
     onChange: ()=>{},
     onSubmitEditing: ()=>{},
     onKeyDown: ()=>{},
@@ -80,7 +81,7 @@ TextField.propTypes = {
     onFocus: PropTypes.func,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
-    label: PropTypes.bool,
+    label: PropTypes.string,
     required: PropTypes.bool,
     uncollapse: PropTypes.bool,
     expand: PropTypes.bool

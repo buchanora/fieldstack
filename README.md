@@ -1,6 +1,6 @@
 # Overview
 
-The the most robust [ReactJS](https://facebook.github.io/react) component library for building flexible, highly interactive and appealing form-based interfaces.
+Fieldstack is a [ReactJS](https://facebook.github.io/react) component library for building beautiful, flexible, highly interactive & robust form-based interfaces.
 
 ## Installation
 ```npm install --save fieldstack```

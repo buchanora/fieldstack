@@ -10,12 +10,12 @@ module.exports = (baseConfig, env) => {
   // Extend it as you need.
 
   // For example, add typescript loader:
-  // config.entry.style = [
-  //   path.resolve(__dirname, '../src/style.scss')
-  // ]
+  config.entry.style = [
+    path.resolve(__dirname, '../src/style.scss')
+  ]
   
   config.module.rules.push({
-    test: [/\.scss$/, /\.sass$/],
+    test: [/\.scss$/],
     use: [  {loader: 'style-loader'},
             {loader: 'css-loader'},
             {loader: 'postcss-loader'},
