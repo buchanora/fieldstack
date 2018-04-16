@@ -7,3 +7,4 @@ yarn.lock
 src
 lib/postcss.config.js
 /*.js
+!postinstall.js

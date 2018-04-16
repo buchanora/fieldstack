@@ -15,6 +15,8 @@ exec('babel src -d lib --ignore __tests__,test.js', {
   BABEL_ENV: 'cjs'
 })
 
+console.log('\nCOpying Scss Theme ...')
+
 exec('cp src/_theme.scss lib/_theme.scss');
 
 console.log('\nBuilding ES modules ...')
