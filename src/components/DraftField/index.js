@@ -8,6 +8,7 @@ import {  Editor,
           convertToRaw,
           convertFromRaw,
 }         from 'draft-js';
+import FieldWrap from '../FieldWrap/';
 
 const blockTypes = [
   {label:null, style:'header-four', iconClass:'header'},
@@ -30,6 +31,9 @@ export default class DraftField extends Component {
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.toggleBlockType = this._toggleBlockType.bind(this);
     this.onChange = this._onChange.bind(this);
+    this._handleKeyCommand = this._handleKeyCommand.bind(this)
+    this._handleBlurDraft = this._handleBlurDraft.bind(this)
+    this._handleFocusDraft = this._handleFocusDraft.bind(this)
   }
   _onChange = (editorState)=>{
     
@@ -54,46 +58,59 @@ export default class DraftField extends Component {
     if (this.props.value){
       this.setState({
           dirty: true,
-        })
+      })
     }
   }
   render() {
-    const {label, value}=this.props;
+    const { label, 
+            expand,
+            id,
+            error,
+            uncollapse,
+            value, 
+            editorState}=this.props;
 
-    const computeEditorState = (_value)=>{
-      if (_value){
-        return _value
+    const getEditorState = (_editorState)=>{
+      if (_editorState){
+        return _editorState
       } 
       return this.state.editorState;
     }
 
-    const currentEditorState = computeEditorState(value)
+    const currentEditorState = getEditorState(editorState || value)
 
-    const inFocus = this.state.inFocus? 'inFocus': '';
+    const inFocus = this.state.inFocus? true : false;
 
-    const dirty = currentEditorState.getCurrentContent().hasText()? 'dirty': '';
-    // console.log(dirty);
-    
+    const dirty = currentEditorState.getCurrentContent().hasText()? true: false;
 
     return (
-      <div className='draftField' onFocus={this._handleFocusDraft.bind(this)} onBlur={this._handleBlurDraft.bind(this)} tabIndex={1}>
+      <FieldWrap  className='draftField'
+                  label={label}
+                  focused={inFocus}
+                  dirty={dirty}
+                  expand={expand}
+                  id={id}
+                  error={error}
+                  uncollapse={uncollapse}
+                  onFocus={this._handleFocusDraft.bind(this)} 
+                  onBlur={this._handleBlurDraft.bind(this)}>
+
         <header className='draftField-toolbar'>
           <InlineStylesToolBar  onToggle={this.toggleInlineStyle}
                                 editorState={currentEditorState}/>
           <BlockTypesToolBar  onToggle={this.toggleBlockType}
                               editorState={currentEditorState}/>
         </header>
+
         <div className='draftField-content'>
-          <span className={`draftField-label ${inFocus} ${dirty}`}>{label}</span>
           <Editor editorState={currentEditorState}
                   className='draftField-editor'
                   ref={el=>{this.draft=el}}
                   handleKeyCommand={this._handleKeyCommand}
                   onChange={this.onChange}/>
         </div>
-        <span   className={`draftField-underline ${inFocus} ${dirty}`}></span>
 
-      </div>
+      </FieldWrap>
     );
   }
   _handleBlurDraft(){
@@ -129,9 +146,14 @@ export default class DraftField extends Component {
 
 DraftField.propTypes = {
   value: PropTypes.object,
+  error: PropTypes.string,
+  id: PropTypes.string,
   label: PropTypes.string,
   editorState: PropTypes.object,
   onChange: PropTypes.func,
+  required: PropTypes.bool,
+  uncollapse: PropTypes.bool,
+  expand: PropTypes.bool,
   handleKeyCommand: PropTypes.func
 };
 

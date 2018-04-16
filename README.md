@@ -99,6 +99,82 @@ Fieldstack is a [ReactJS](https://facebook.github.io/react) component library fo
 > `object` | defaults to `{}`
 
 
+
+## [TextField](#textField)
+<!--- ### Example --->
+
+### Props
+
+#### className
+> `string` | defaults to `""`
+
+#### disabled
+> `boolean` | defaults to `false`
+
+#### error
+> `string` | defaults to `null`
+
+#### expand
+> `boolean` | defaults to `false`
+
+#### id
+> `string` | defaults to `""`
+
+#### label
+> `string` | defaults to `""`
+
+#### name
+> `string` | defaults to `null`
+
+#### onChange
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### SubmitEditing
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### onKeyDown
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### onKeyUp
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### onMouseEnter
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### onMouseLeave
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### required
+> `bolean` | defaults to `false`
+
+#### type
+> `string` | defaults to `""`
+
+#### uncollapse
+> `bolean` | defaults to `false`
+
+#### values
+> `object` | defaults to `{}`
+
+## [DateField](#DateField)
+## [TimeField](#timeField)
+
+## [MultiLineField](#MultiLineField)
+
+## [DraftField](#DraftField)
+
+## [FieldGroup](#FieldGroup)
+## [OptionTextField](#OptionTextField)
+## [RangeSelect](#RangeSelect)
+## [Select](#Select)
+## [SelectButton](#SelectButton)
+## [SuggestionField](#SuggestionField)
+## [UploadField](#UploadField)
+
+
+## License
+MIT
+
 <!---## Utilities
 ## Styles --->
 

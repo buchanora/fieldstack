@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FieldWrap from '../FieldWrap/';
 
 export default function TextField (props) {
 
@@ -24,32 +25,33 @@ export default function TextField (props) {
             expand  } = props;
   
 
-  return(
-      <span  className={'textField-wrap' + `${className} ${value ? 'textField--dirty' : '' } ${error? 'textField--error': ''} ${uncollapse ?'textField--uncollapse' :''} ${expand ?'textField--expand' :''}`}
-            tabIndex='0' 
-            id={id}>
+    return(
+        <FieldWrap  name={name}
+                    disabled={disabled}
+                    dirty={value}
+                    error={error}
+                    uncollapse={uncollapse}
+                    label={label}
+                    expand={expand}
+                    id={id}
+                    className={`${className}`}>
 
           <input  name={name}
                   disabled={disabled}
                   type={type}
-                  className='textField-input'
-                  onChange = {onChange}
+                  className='field-input text-field'
+                  onChange={onChange}
                   onBlur={onBlur}
                   onFocus={onFocus}
                   onKeyDown={onKeyDown}
                   onKeyUp={onKeyUp}
                   onMouseEnter={onMouseEnter}
                   onMouseLeave={onMouseLeave}
-                  onSubmit = {onSubmitEditing}
-                  value = {value}
+                  onSubmit={onSubmitEditing}
+                  value={value}
                   required={required} />
-
-          <label  className={`textField-label`}
-                  htmlFor={name}>
-              {error || label}
-          </label>
-      </span>
-  );
+        </FieldWrap>
+    );
 
 }
 
@@ -66,13 +68,13 @@ TextField.defaultProps = {
     onMouseLeave: ()=>{},
 }
 TextField.propTypes = {
-    name: PropTypes.string,
-    disabled: PropTypes.bool,
-    type: PropTypes.string,
-    value: PropTypes.string,
-    error: PropTypes.string,
-    id: PropTypes.string,
     className: PropTypes.string,
+    disabled: PropTypes.bool,
+    error: PropTypes.string,
+    expand: PropTypes.bool,
+    id: PropTypes.string,
+    label: PropTypes.string,
+    name: PropTypes.string,
     onChange: PropTypes.func,
     onSubmitEditing: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -81,8 +83,8 @@ TextField.propTypes = {
     onFocus: PropTypes.func,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
-    label: PropTypes.string,
     required: PropTypes.bool,
+    type: PropTypes.string,
     uncollapse: PropTypes.bool,
-    expand: PropTypes.bool
+    value: PropTypes.string,
 }
