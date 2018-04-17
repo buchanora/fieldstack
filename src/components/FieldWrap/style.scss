@@ -12,7 +12,7 @@
     content: '';
     width: 100%;
     display: block;
-    background: $field-underline-color;
+    background: $field-underline-color--active;
     height: 2px;
     transform: rotateY(90deg);
     transform-origin: center;

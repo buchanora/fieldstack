@@ -1,24 +1,20 @@
 .radio-field, .radio-label, .check-field, .check-label{
-  color: darken($color-mid-gray, 20);
+  color: $field-text-color;
 }
 .select-group{
+  font-family: $font-family;
   border: none;
   box-sizing: border-box;
-  // max-width: 720px;
-  // height: 72px;
-  // display: inline-block;
-  color: $color-dark-gray;
+  width: 100%;
+  max-width: $field-wrap-width;
+  color: $field-text-color;
   padding-top: 16px;
   padding-bottom: 8px;
-  // margin: 0 auto;
-  // margin-right: 30px;
-  // margin-bottom: 15px;
-  min-width: 160px;
 }
 .select-group::after{
     display: block;
     content: ' ';
-    background: $color-mid-gray;
+    background: $field-underline-color;
     height: 1px;
     margin-top: 7px;
 }
@@ -27,8 +23,8 @@
 }
 .select-label{
   font-weight: 700;
-  color: $color-dark-gray;
-  font-size: $font-size-down-2;
+  color: $field-label-color;
+  font-size: $field-label-size--focus;
   margin-bottom: 0;
 }
 .select-field{
@@ -40,7 +36,7 @@
   float: right;
 }
 .checker{
-  font-size: $font-size-default;
+  font-size: $field-label-size;
   box-sizing: border-box;
   position: relative;
   display: inline-block;
@@ -48,8 +44,6 @@
   // height: 24px;
   color: $color-white;
   margin-right: 7.5px;
-  font-size: $font-size-default;
-  
 }
 .checker-box{
   text-align: center;

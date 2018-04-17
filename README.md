@@ -1,9 +1,23 @@
 # Overview
 
-Fieldstack is a [ReactJS](https://facebook.github.io/react) component library for building beautiful, flexible, highly interactive & robust form-based interfaces.
+> WARNING!!! This library is undergoing active prerelease development. Please check back daily for feature/documentation updates & bug fixes.
+
+Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) component library for building beautiful, flexible & highly interactive form-based interfaces.
 
 ## Installation
 ```npm install --save fieldstack```
+
+## Styles
+
+Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's Scss.
+
+### Sass Import
+```
+@import '~fieldstack/lib/style_config'
+@import '~fieldStack/lib/default_theme';
+@import '~fieldstack/lib/base_styles';
+```
+>To customize theme colors, fonts etc, copy `style_config.scss` and replace the values in it with your custom values.
 
 ## Basic Example
 ```
@@ -16,7 +30,7 @@ Fieldstack is a [ReactJS](https://facebook.github.io/react) component library fo
     }
     render(){
       const actions = {
-        onChange: this.handleChange
+        onChange: this.handleChange.bind(this)
       }
       return(
         <FieldStack formData={formData}
@@ -35,7 +49,7 @@ Fieldstack is a [ReactJS](https://facebook.github.io/react) component library fo
   }
 
   formData: {
-    formTitle: 'Login Form',
+    formTitle: 'Signup Form',
     fields: [
       {
         name: 'email',
@@ -52,12 +66,32 @@ Fieldstack is a [ReactJS](https://facebook.github.io/react) component library fo
         keyboard: 'default',
       },
       {
-        name: 'confirmPassword',
-        label: 'Confirm Password',
-        type: 'password',
-        secure: true,
-        keyboard: 'default',
-      }
+      name: 'industry',
+      label: 'Industry',
+      type: 'option-text',
+      secure: false,
+      keyboard: 'default',
+      options: [
+        {name:'auto', value: 'auto'},
+        {name:'chemical', value: 'chemical'},
+        {name:'building', value: 'building'},
+        {name:'electronics', value: 'electronics'},
+      ]
+    },
+    {
+      name: 'phone',
+      label: 'Phone Number',
+      type: 'tel',
+      secure: false,
+      keyboard: 'numeric',
+    },
+    {
+      name: 'description',
+      label: 'Company Brief',
+      type: 'multiline-text',
+      secure: false,
+      keyboard: 'default',
+    },
     ]
   }
 ```

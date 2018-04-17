@@ -185,6 +185,51 @@
 	content: "\eece";
 }
 
+
+.icofont-check-alt:before {
+	content: "\efab";
+}
+.icofont-check-circled:before {
+	content: "\efac";
+}
+.icofont-check:before {
+	content: "\efad";
+}
+.icofont-checked:before {
+	content: "\efae";
+}
+
+.icofont-close-circled:before {
+	content: "\efb1";
+}
+.icofont-close-line-circled:before {
+	content: "\efb2";
+}
+.icofont-close-line-squared-alt:before {
+	content: "\efb3";
+}
+.icofont-close-line-squared:before {
+	content: "\efb4";
+}
+.icofont-close-line:before {
+	content: "\efb5";
+}
+.icofont-close-squared-alt:before {
+	content: "\efb6";
+}
+.icofont-close-squared:before {
+	content: "\efb7";
+}
+.icofont-close:before {
+	content: "\efb8";
+}
+.icofont-camera-alt:before {
+	content: "\efa2";
+}
+.icofont-camera:before {
+	content: "\efa3";
+}
+
 /*Font size*/
 .icofont-lg {
     font-size: 1.33333333em;

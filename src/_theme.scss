@@ -13,7 +13,8 @@ $field-text-color: $color-dark-gray;
 $field-text-color--disabled: $color-gray-0;
 $field-text-size: $font-size-default;
 
-$field-underline-color: $color-secondary-2;
+$field-underline-color--active: $color-secondary-2;
+$field-underline-color: $color-gray-0;
 
 $field-label-color: $color-dark-4;
 $field-label-color--dirty: $color-gray-0;

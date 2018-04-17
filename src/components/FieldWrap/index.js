@@ -52,5 +52,5 @@ FieldWrap.propTypes = {
     uncollapse: PropTypes.bool,
     expand: PropTypes.bool,
     onFocus: PropTypes.func,
-    onBlur: PropTypes.onBlur
+    onBlur: PropTypes.func
 }

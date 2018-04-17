@@ -5,9 +5,7 @@ export function SelectOption(props){
 
     const { disabled,
             checkerType,
-            value,
-            name,
-            parent,
+            label,
             checked,
             onChange } = props;
   
@@ -17,21 +15,18 @@ export function SelectOption(props){
       <span     className={`select-option ${checkedStateClass} ${disabledStateClass}`}
                 onClick={disabled || onChange}>
   
-          <Checker style={checkerType} checked={checked} disabled={disabled}/>
-          {name}
+          <Checker style={checkerType || 'sphere'} checked={checked} disabled={disabled}/>
+          {label}
   
       </span>
     )
   }
   
-  export function SelectBox(props){
+  export function SelectButton(props){
   
     const { disabled,
-            checkerType,
-            value,
-            name,
+            label,
             iconClass,
-            parent,
             checked,
             onChange} = props;
   
@@ -43,18 +38,17 @@ export function SelectOption(props){
                 onClick={disabled || onChange}>
   
           <i className={iconClass}></i>
-          {name}
+          {label}
   
       </span>
     );
   
   }
-  export function SelectListItem(props){
+  export function CheckListItem(props){
   
     const { disabled,
             checkerType,
-            content,
-            parent,
+            label,
             checked,
             onChange} = props;
   
@@ -65,12 +59,11 @@ export function SelectOption(props){
       <div     className={`select-list-item ${checkedStateClass} ${disabledStateClass}`}
                onClick={disabled || onChange}>
   
-          <span className='select-list-item-checker'>
-            <Checker style={checkerType} checked={checked} disabled={disabled}/>
-          </span>
-  
           <span className='select-list-item-content'>
-            {content}
+            {label}
+          </span>
+          <span className='select-list-item-checker'>
+            <Checker style={checkerType || 'tick'} checked={checked} disabled={disabled}/>
           </span>
   
       </div>
@@ -84,8 +77,8 @@ export function SelectOption(props){
             checked=false,
             style='sphere' } = props;
   
-    const disabledStateClass = disabled && 'checker-disabled';
-    const checkedStateClass = checked && 'checker-checked';
+    const disabledStateClass = disabled ?'checker-disabled' : '';
+    const checkedStateClass = checked ?'checker-checked' : '';
   
     function setStyleClass(style, checked){
       if(style==='tick'){
