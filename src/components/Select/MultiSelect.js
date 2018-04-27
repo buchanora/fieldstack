@@ -4,6 +4,9 @@ import Select from './Select'
 export default class MultiSelectFieldSet extends Component{
     constructor(props){
       super(props);
+      this.state = {};
+      this._handleCheckStateChange = this._handleCheckStateChange.bind(this)
+      
     }
   
     componentWillMount(){

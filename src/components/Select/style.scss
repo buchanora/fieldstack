@@ -79,6 +79,7 @@
   margin-bottom: 15px;
   min-width: 160px;
   text-align: left;
+  font-size: $font-size-down-1;
 }
 .select-option:hover{
   cursor: pointer;
@@ -93,11 +94,12 @@
 .select-button{
   box-sizing: border-box;
   display: inline-block;
-  border: 1px solid $color-tint-0;
+  border: 2px solid $color-tint-0;
   border-radius: $edge-radius;
-  color: $color-dark-4;
+  color: $field-label-color;
   padding: 7.5px 15px;
   margin-right: 15px;
+  font-size: $font-size-down-1;
   // margin-left: 7.5px;
   margin-bottom: 15px;
   transition: opacity 0.2s ease-in-out;
@@ -116,14 +118,18 @@
 .select-list-item{
   display: flex;
   box-sizing: border-box;
-  border-bottom: 1px solid $color-mid-gray;
-  padding: 15px 0;
+  font-size: $font-size-down-1;
+  // font-weight: 700;
+  border-top: 2px solid $color-tint-1;
+  padding: 18px 0;
+  transition: all 0.25s ease-in-out;
 }
 .select-list-item:last-child{
   border-bottom: none;
 }
 .select-list-item:hover{
   color: $color-primary-3;
+  cursor: pointer;
 }
 .select-list-item-checked{
   color: $color-primary-0;

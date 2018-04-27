@@ -5,7 +5,6 @@
     width: 100%;
     max-width: $field-wrap-width;
     display: inline-block;
-//   background-color: $color-tint-1;
     z-index: $field-wrap-elevation;
 }
 .field-wrap::after{
@@ -28,9 +27,9 @@
 .field-wrap.field--expand{
     max-width: 100%;
 }
-.field-wrap:last-of-type{
-    margin-bottom: 30px;
-}
+// .field-wrap:last-of-type{
+//     margin-bottom: 30px;
+// }
 .field-input{
     box-sizing: border-box;
     width: 100%;

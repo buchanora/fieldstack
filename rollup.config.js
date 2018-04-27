@@ -8,6 +8,7 @@ import sass from 'rollup-plugin-sass';
 import stripCode from "rollup-plugin-strip-code"
 import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
+import image from 'rollup-plugin-image';
 import {writeFileSync} from 'fs';
 import path from 'path';
 
@@ -22,6 +23,7 @@ const config = {
   },
   external: ["react", "redux" ,"react-redux", "react-dom"],
   plugins: [
+    image(),
     sass({
       output(styles, styleNodes) {
         writeFileSync(path.resolve(__dirname, 'lib', 'styles.css'), styles);

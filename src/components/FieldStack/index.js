@@ -103,7 +103,7 @@ class  FieldStack extends Component{
         onKeyUp: onKeyUp,
         name: name,
         value: value,
-        secure: secure,
+        secure: secure || type === 'password',
       }
 
       switch (field.type){
@@ -115,13 +115,13 @@ class  FieldStack extends Component{
           case 'tel':
             return <TextField type={type} {...props}/>;
             break;
-          case 'multiline-text':
+          case 'multilineText':
             return <MultiLineField {...props}/>;
             break;
-          case 'editable-text':
+          case 'editableText':
             return <EditableTextField  {...props} />;
             break;
-          case 'option-text':
+          case 'optionText':
             return <OptionTextField  {...props} options={options}/>;
             break;
           case 'date':
@@ -130,10 +130,10 @@ class  FieldStack extends Component{
           case 'time':
             return <TimeField   {...props} />;
             break;
-          case 'multi-select':
+          case 'multiSelectFieldSet':
             return <MultiSelectFieldSet {...props}  style={style} onChange={onToggleMultiSelect} options={options}/>;
             break;
-          case 'select':
+          case 'selectFieldSet':
             return <SelectFieldSet  options={options} {...props}/>;
             break;
           case 'upload':

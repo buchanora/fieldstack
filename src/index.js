@@ -12,6 +12,7 @@ export DateField from './components/DateField/';
 export DraftField from './components/DraftField/';
 export EditableTextField from './components/EditableTextField/';
 export FieldGroup from './components/FieldGroup/';
+export FieldRow from './components/FieldGroup/';
 export MultiLineField from './components/MultiLineField/';
 export OptionTextField from './components/OptionTextField/';
 export RangeSelect from './components/RangeSelect/';

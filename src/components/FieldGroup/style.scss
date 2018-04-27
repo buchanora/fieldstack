@@ -6,29 +6,37 @@
   // z-index: $z2;
   flex-wrap: wrap;
   width: 100%;
+  max-width: $field-wrap-width *2;
   margin: 0 auto;
-  // background-color: $color-tint-1;
   @include breakpoint(medium){
     flex-wrap: nowrap;
   };
-  // overflow: hidden;
-  // box-shadow: $shadow-z3;
 }
-.fieldGroup > div{
+@media screen and (min-width: 700px ) {
+  .fieldGroup{
+    flex-wrap: nowrap;
+  }
+}
+.fieldGroup > .field-wrap{
   margin-right: 1px;
   margin-left: 1px;
 }
-.fieldGroup > div:last-of-type{
+.fieldGroup > .field-wrap:last-of-type{
   margin-right: 0;
+  margin-bottom: 0;
 }
-.fieldGroup > div:first-of-type{
+.fieldGroup > .field-wrap:first-of-type{
   margin-left: 0;
 }
 .fieldGroup:last-child{
-  // box-shadow: none;
-  // position: absolute;
 }
-.fieldGroup .textField-wrap{
-  // box-shadow: none;
-  // position: absolute;
+.fieldGroup .field-wrap{
+  
+}
+
+.fieldGroup.fieldGroup--uncollapsed{
+  margin-bottom: 30px;
+}
+.fieldGroup.fieldGroup--expanded{
+  max-width: 100%;
 }

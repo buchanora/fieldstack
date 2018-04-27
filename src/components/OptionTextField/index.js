@@ -1,55 +1,104 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+import FieldWrap from '../FieldWrap/';
 
 
 export default function OptionTextField (props) {
 
-  const { name = '',
-          disabled = false,
-          type = 'text',
-          value = '',
-          error,
-          onChange = ()=>{},
-          onSubmitEditing = ()=>{},
-          label = '',
-          onBlur,
-          onFocus,
-          options = [],
-          required = true  } = props;
-
-  const isRequired = required && true;
+  const {   name,
+    disabled,
+    type,
+    value,
+    error,
+    id,
+    className,
+    onChange,
+    onSubmitEditing,
+    onKeyDown,
+    onKeyUp,
+    onBlur,
+    onFocus,
+    onMouseEnter,
+    onMouseLeave,
+    options,
+    label,
+    required,
+    uncollapse,
+    expand  } = props;
 
   const dataListOptions = options.map( (option, index)=>{
     return (
-      <option value = {option} key = {`option_${index}`}/>
+      <option value={option} key={`option_${index}`}/>
     )
   })
 
   return(
-      <div className='textField-wrap'>
 
-          <input  name  ={name}
-                  disabled = {disabled}
-                  type = {type}
+        <FieldWrap  name={name}
+                    disabled={disabled}
+                    dirty={value}
+                    error={error}
+                    uncollapse={uncollapse}
+                    label={label}
+                    expand={expand}
+                    id={id}
+                    className={`${className}`}>
+
+          <input  name={name}
+                  disabled={disabled}
+                  type={type}
+                  className='field-input text-field'
                   list = {`${name}_options`}
-                  className ='textField-input'
-                  onChange = {onChange}
-                  onSubmit = {onSubmitEditing}
-                  value = {value}
-                  required />
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  onFocus={onFocus}
+                  onKeyDown={onKeyDown}
+                  onKeyUp={onKeyUp}
+                  onMouseEnter={onMouseEnter}
+                  onMouseLeave={onMouseLeave}
+                  onSubmit={onSubmitEditing}
+                  value={value}
+                  required={required} />
 
-          <span   className='textField-underline'></span>
-
-          <label  className={`textField-label ${value === '' ?'' : 'textField-label--dirty' } ${error? 'textField-error': ''}`}
-                  htmlFor={name}>
-              {error || label}
-          </label>
-
-          <dataList id = {`${name}_options`}>
+          <dataList id={`${name}_options`}>
             {dataListOptions}
           </dataList>
-
-      </div>
+        </FieldWrap>
   );
 
+}
+
+OptionTextField.defaultProps = {
+  className: '',
+  value: '',
+  onChange: ()=>{},
+  onSubmitEditing: ()=>{},
+  onKeyDown: ()=>{},
+  onKeyUp: ()=>{},
+  onBlur: ()=>{},
+  onFocus: ()=>{},
+  onMouseEnter: ()=>{},
+  onMouseLeave: ()=>{},
+}
+OptionTextField.propTypes = {
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  expand: PropTypes.bool,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmitEditing: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  options: PropTypes.array,
+  required: PropTypes.bool,
+  type: PropTypes.string,
+  uncollapse: PropTypes.bool,
+  value: PropTypes.string,
 }

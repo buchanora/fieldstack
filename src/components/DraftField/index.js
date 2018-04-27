@@ -65,10 +65,11 @@ export default class DraftField extends Component {
     const { label, 
             expand,
             id,
+            className,
             error,
             uncollapse,
             value, 
-            editorState}=this.props;
+            editorState }=this.props;
 
     const getEditorState = (_editorState)=>{
       if (_editorState){
@@ -84,13 +85,14 @@ export default class DraftField extends Component {
     const dirty = currentEditorState.getCurrentContent().hasText()? true: false;
 
     return (
-      <FieldWrap  className='draftField'
+      <FieldWrap  className={`draftField ${className}`}
                   label={label}
                   focused={inFocus}
                   dirty={dirty}
                   expand={expand}
                   id={id}
                   error={error}
+                  tabIndex={1}
                   uncollapse={uncollapse}
                   onFocus={this._handleFocusDraft.bind(this)} 
                   onBlur={this._handleBlurDraft.bind(this)}>
@@ -105,7 +107,7 @@ export default class DraftField extends Component {
         <div className='draftField-content'>
           <Editor editorState={currentEditorState}
                   className='draftField-editor'
-                  ref={el=>{this.draft=el}}
+                  ref={el=>this.draft=el}
                   handleKeyCommand={this._handleKeyCommand}
                   onChange={this.onChange}/>
         </div>
@@ -148,6 +150,7 @@ DraftField.propTypes = {
   value: PropTypes.object,
   error: PropTypes.string,
   id: PropTypes.string,
+  className: PropTypes.string,
   label: PropTypes.string,
   editorState: PropTypes.object,
   onChange: PropTypes.func,

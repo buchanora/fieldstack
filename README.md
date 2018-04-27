@@ -54,44 +54,70 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
       {
         name: 'email',
         label: 'Email',
-        type: 'text',
-        secure: false,
-        keyboard: 'email-address',
+        type: 'email',
       },
       {
         name: 'password',
         label: 'Password',
         type: 'password',
-        secure: true,
-        keyboard: 'default',
       },
       {
-      name: 'industry',
-      label: 'Industry',
-      type: 'option-text',
-      secure: false,
-      keyboard: 'default',
-      options: [
-        {name:'auto', value: 'auto'},
-        {name:'chemical', value: 'chemical'},
-        {name:'building', value: 'building'},
-        {name:'electronics', value: 'electronics'},
-      ]
-    },
-    {
-      name: 'phone',
-      label: 'Phone Number',
-      type: 'tel',
-      secure: false,
-      keyboard: 'numeric',
-    },
-    {
-      name: 'description',
-      label: 'Company Brief',
-      type: 'multiline-text',
-      secure: false,
-      keyboard: 'default',
-    },
+        name: 'website',
+        label: 'Company Website',
+        type: 'url',
+      },
+      {
+        name: 'about',
+        label: 'Company Bio',
+        type: 'multiline-text',
+      },
+      {
+        name: 'regDate',
+        label: 'Registration Date',
+        type: 'date',
+      },
+      {
+        name: 'time',
+        label: 'Office Resumption Time',
+        type: 'time',
+      },
+      {
+        name: 'industry',
+        label: 'Industry',
+        type: 'option-text',
+        options: [
+          'Automobile',
+          'Building',
+          'Cosmetics',
+          'Eduction',
+        ]
+      },
+      {
+        name: 'phone',
+        label: 'Phone Number',
+        type: 'tel',
+      }
+      {
+        name: 'accountType',
+        label: 'Account Type',
+        type: 'selectFieldSet',
+        options: [
+          {key:'savings', label: 'Saving Account'},
+          {key:'current', label: 'Current Account'},
+          {key:'escrow', label: 'Escrow Account'},
+          {key:'dom', label: 'Dom Account'},
+        ]
+      },
+      {
+        name: 'addon',
+        label: 'Addon Features',
+        type: 'multiSelectFieldSet',
+        options: [
+          {key:'social', label: 'Social Banking'},
+          {key:'lifestyle', label: 'Lifestyle Banking'},
+          {key:'mobile', label: 'Mobile Banking'}
+        ]
+      },
     ]
   }
 ```
@@ -135,6 +161,8 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
 
 
 ## [TextField](#textField)
+## [DateField](#DateField)
+## [TimeField](#timeField)
 <!--- ### Example --->
 
 ### Props
@@ -188,22 +216,160 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
 > `bolean` | defaults to `false`
 
 #### values
-> `object` | defaults to `{}`
+> `string` | defaults to `""`
 
-## [DateField](#DateField)
-## [TimeField](#timeField)
+## [OptionTextField](#OptionTextField)
+### Props
+Same as `TextField` +
+#### rows
+> `options` | defaults to `[]`
 
 ## [MultiLineField](#MultiLineField)
+### Props
+Same as `TextField` +
+#### rows
+> `number` | defaults to `3`
 
 ## [DraftField](#DraftField)
+### Props
+#### className
+> `string` | defaults to `""`
 
-## [FieldGroup](#FieldGroup)
-## [OptionTextField](#OptionTextField)
-## [RangeSelect](#RangeSelect)
-## [Select](#Select)
-## [SelectButton](#SelectButton)
-## [SuggestionField](#SuggestionField)
+#### error
+> `string` | defaults to `null`
+
+#### expand
+> `boolean` | defaults to `false`
+
+#### id
+> `string` | defaults to `""`
+
+#### label
+> `string` | defaults to `""`
+
+#### onChange
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+<!-- #### onKeyDown
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### onKeyUp
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### onMouseEnter
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+
+#### onMouseLeave
+> `function(event: syntheticEvent)` | defaults to `()=>{}` -->
+
+<!-- #### required
+> `bolean` | defaults to `false` -->
+
+#### uncollapse
+### Props
+> `bolean` | defaults to `false`
+
+#### editorState
+### Props
+> `object` | defaults to ` <DraftJS Editor State>`
+
+## [FieldRow](#FieldRow)
+### Props
+#### uncollapse
+> `uncollapse` | defaults to `false`
+
+<!-- ## [RangeSelect](#RangeSelect) -->
+## [SelectFieldSet](#SelectFieldSet)
+### Props
+#### className
+> `string` | defaults to `""`
+
+#### disabled
+> `boolean` | defaults to `false`
+
+#### error
+> `string` | defaults to `null`
+
+#### expand
+> `boolean` | defaults to `false`
+
+#### id
+> `string` | defaults to `""`
+
+#### label
+> `string` | defaults to `""`
+
+#### name
+> `string` | defaults to `null`
+
+#### onChange
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+#### options
+> `array` | defaults to `null`
+#### selection
+> `object []` | 
+> of shape:
+> `{ key: string,
+>   label: string,
+>   iconClass: string }` | 
+>defaults to `null`
+#### style
+> `string` | one of `checkList`, `buttonGrid` | defaults to `null`
+## [MultiSelectFieldSet](#MultiSelectFieldSet)
+### Props
+#### className
+> `string` | defaults to `""`
+
+#### disabled
+> `boolean` | defaults to `false`
+
+#### error
+> `string` | defaults to `null`
+
+#### expand
+> `boolean` | defaults to `false`
+
+#### id
+> `string` | defaults to `""`
+
+#### label
+> `string` | defaults to `""`
+
+#### name
+> `string` | defaults to `null`
+
+#### onChange
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+#### options
+> `array` | defaults to `null`
+#### selection
+> `object` | 
+> of shape:
+> `{ key: string,
+>   label: string,
+>   iconClass: string }` | 
+>defaults to `null`
+#### style
+> `string` | one of `checkList`, `buttonGrid` | defaults to `null`
+
+<!-- ## [SelectButton](#SelectButton) -->
+<!-- ## [SuggestionField](#SuggestionField) -->
 ## [UploadField](#UploadField)
+###props
+#### name
+> `string` | defaults to `null`
+#### icon
+> `boolean` | defaults to `true`
+#### disabled
+> `boolean` | defaults to `false`
+#### onChange
+> `function(event: syntheticEvent)` | defaults to `()=>{}`
+#### label
+> `string` | defaults to `""`
+#### multiple
+> `boolean` | defaults to `false`
+#### required
+> `boolean` | defaults to `false`
 
 
 ## License
