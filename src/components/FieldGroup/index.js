@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {PropTypes} from 'prop-types';
 
-export default function FieldGroup (props) {
+export default function FieldRow (props) {
 
   return(
       <div className={`fieldGroup ${props.uncollapse? 'fieldGroup--uncollapsed' : ''}`}>
@@ -8,4 +9,8 @@ export default function FieldGroup (props) {
       </div>
   );
 
+}
+
+FieldRow.propTypes = {
+  uncollapse: PropTypes.bool
 }

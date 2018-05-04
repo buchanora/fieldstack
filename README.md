@@ -1,7 +1,5 @@
 # Overview
 
-> WARNING!!! This library is undergoing active prerelease development. Please check back daily for feature/documentation updates & bug fixes.
-
 Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) component library for building beautiful, flexible & highly interactive form-based interfaces.
 
 ## Installation
@@ -9,7 +7,7 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
 
 ## Styles
 
-Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's Scss.
+Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's SCSS.
 
 ### Sass Import
 ```
@@ -17,9 +15,10 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
 @import '~fieldStack/lib/default_theme';
 @import '~fieldstack/lib/base_styles';
 ```
->To customize theme colors, fonts etc, copy `style_config.scss` and replace the values in it with your custom values.
+### Theming/Customisation
+To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style_config.scss` and override the variable values in it with your custom values.
 
-## Basic Example
+## Fordata API Example
 ```
   import React, {Component} from 'react';
   import {FieldStack} from 'fieldstack';
@@ -69,7 +68,7 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
       {
         name: 'about',
         label: 'Company Bio',
-        type: 'multiline-text',
+        type: 'multiLineText',
       },
       {
         name: 'regDate',
@@ -84,7 +83,7 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
       {
         name: 'industry',
         label: 'Industry',
-        type: 'option-text',
+        type: 'optionText',
         options: [
           'Automobile',
           'Building',
@@ -121,8 +120,57 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
     ]
   }
 ```
-> See [Fieldstack](#fieldstack) Component documentation 
->for a more advanced example
+## Render Prop API Example
+```
+  import React, {Component} from 'react';
+  import {FieldStack, TextField, MultiLineField, FieldRow} from 'fieldstack';
+
+  class SampleForm extends Component{
+    state: {
+      values: {}
+    }
+    render(){
+      const actions = {
+        onChange: this.handleChange.bind(this)
+      }
+      return(
+        <FieldStack values={this.state.values}
+                    actions={actions}
+                    render={({values, actions, fieldErrors, disabledFields, disabledForm})=>{
+                        return(
+                            <div>
+                              <FieldRow>
+                                <TextField  label='First Name'
+                                            value={values.firstName}
+                                            onChange={actions.onChange.bind(null, 'firstName', )}/>
+                                <TextField  label='Last Name'
+                                            value={values.lastName}
+                                            onChange={actions.onChange.bind(null, 'lastName', )}/>
+                                <TextField  label='Email'
+                                            value={values.email}
+                                            onChange={actions.onChange.bind(null, 'email')}/>
+                                <TextField  label='Phone Number'
+                                            value={values.phone}
+                                            onChange={actions.onChange.bind(null, 'phone')}/>
+                              </FieldRow>
+                              <MultiLineField   label='Bio'
+                                                value={values.aboutMe}
+                                                onChange={actions.onChange.bind(null, 'aboutMe', )}/>
+                            </div>
+                          )
+                    }}/>
+      );
+    }
+    handleChange(fieldName, event){
+      this.setState(currentState=>({
+        values: {
+          [fieldName]: event.target.value,
+          ...currentState.values
+        }
+      }))
+    }
+  }
+```
 
 # Components
 
@@ -130,33 +178,17 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
 <!--- ### Example --->
 
 ### Props
-
-#### activeFieldIndex
-> `number` | defaults to null
-
-#### actions
-> `object` | defaults to `{}`
-
-#### disabledForm
-> `boolean` | defaults to `false`
-
-#### disabledFields
-> `object` | defaults to `{}`
-
-#### formData
-> `object` | defaults to `null`
-
-#### fieldErrors
-> `object` | defaults to `{}`
-
-#### formError
-> `string` | defaults to `null`
-
-#### render
-> `function(options: object)` | defaults to `null`
-
-#### values
-> `object` | defaults to `{}`
+```
+  activeFieldIndex: PropTypes.number,
+  actions: PropTypes.object.isRequired,
+  disabledForm: PropTypes.bool,
+  disabledFields: PropTypes.object,
+  formData: PropTypes.object,
+  fieldErrors: PropTypes.object,
+  formError: PropTypes.string,
+  render: PropTypes.func,
+  values: PropTypes.object
+```
 
 
 
@@ -167,209 +199,159 @@ Fieldstack relies on SCSS for styling. Be sure to import the library's style she
 
 ### Props
 
-#### className
-> `string` | defaults to `""`
-
-#### disabled
-> `boolean` | defaults to `false`
-
-#### error
-> `string` | defaults to `null`
-
-#### expand
-> `boolean` | defaults to `false`
-
-#### id
-> `string` | defaults to `""`
-
-#### label
-> `string` | defaults to `""`
-
-#### name
-> `string` | defaults to `null`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### SubmitEditing
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onKeyDown
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onKeyUp
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseEnter
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseLeave
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### required
-> `bolean` | defaults to `false`
-
-#### type
-> `string` | defaults to `""`
-
-#### uncollapse
-> `bolean` | defaults to `false`
-
-#### values
-> `string` | defaults to `""`
+```
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  expand: PropTypes.bool,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmitEditing: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  required: PropTypes.bool,
+  type: PropTypes.string,
+  uncollapse: PropTypes.bool,
+  value: PropTypes.string
+```
 
 ## [OptionTextField](#OptionTextField)
 ### Props
-Same as `TextField` +
-#### rows
-> `options` | defaults to `[]`
+```
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  expand: PropTypes.bool,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmitEditing: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.string),
+  required: PropTypes.bool,
+  type: PropTypes.string,
+  uncollapse: PropTypes.bool,
+  value: PropTypes.string
+```
 
 ## [MultiLineField](#MultiLineField)
 ### Props
-Same as `TextField` +
-#### rows
-> `number` | defaults to `3`
+```
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+  type: PropTypes.string,
+  value: PropTypes.string,
+  error: PropTypes.string,
+  id: PropTypes.string,
+  className: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmitEditing: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  onBlur: PropTypes.func,
+  onFocus: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  label: PropTypes.string,
+  required: PropTypes.bool,
+  uncollapse: PropTypes.bool,
+  expand: PropTypes.bool,
+  size: PropTypes.number
+```
 
-## [DraftField](#DraftField)
+<!-- ## [DraftField](#DraftField)
 ### Props
-#### className
-> `string` | defaults to `""`
-
-#### error
-> `string` | defaults to `null`
-
-#### expand
-> `boolean` | defaults to `false`
-
-#### id
-> `string` | defaults to `""`
-
-#### label
-> `string` | defaults to `""`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-<!-- #### onKeyDown
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onKeyUp
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseEnter
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-
-#### onMouseLeave
-> `function(event: syntheticEvent)` | defaults to `()=>{}` -->
-
-<!-- #### required
-> `bolean` | defaults to `false` -->
-
-#### uncollapse
-### Props
-> `bolean` | defaults to `false`
-
-#### editorState
-### Props
-> `object` | defaults to ` <DraftJS Editor State>`
+```
+  value: PropTypes.object,
+  error: PropTypes.string,
+  id: PropTypes.string,
+  className: PropTypes.string,
+  label: PropTypes.string,
+  editorState: PropTypes.object,
+  onChange: PropTypes.func,
+  required: PropTypes.bool,
+  uncollapse: PropTypes.bool,
+  expand: PropTypes.bool,
+  handleKeyCommand: PropTypes.func
+``` -->
 
 ## [FieldRow](#FieldRow)
 ### Props
-#### uncollapse
-> `uncollapse` | defaults to `false`
+```
+  uncollapse: PropTypes.bool
+```
 
 <!-- ## [RangeSelect](#RangeSelect) -->
 ## [SelectFieldSet](#SelectFieldSet)
-### Props
-#### className
-> `string` | defaults to `""`
-
-#### disabled
-> `boolean` | defaults to `false`
-
-#### error
-> `string` | defaults to `null`
-
-#### expand
-> `boolean` | defaults to `false`
-
-#### id
-> `string` | defaults to `""`
-
-#### label
-> `string` | defaults to `""`
-
-#### name
-> `string` | defaults to `null`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-#### options
-> `array` | defaults to `null`
-#### selection
-> `object []` | 
-> of shape:
-> `{ key: string,
->   label: string,
->   iconClass: string }` | 
->defaults to `null`
-#### style
-> `string` | one of `checkList`, `buttonGrid` | defaults to `null`
 ## [MultiSelectFieldSet](#MultiSelectFieldSet)
 ### Props
-#### className
-> `string` | defaults to `""`
+```
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  expand: PropTypes.bool,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  multiple: PropTypes.bool,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string,
+    iconClass: PropTypes.string
+  })),
+  selection: PropTypes.oneOfType([
+    PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.string,
+      iconClass: PropTypes.string
+    }), 
+    PropTypes.objectOf(PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.string,
+      iconClass: PropTypes.string
+    }))
+  ]),
+  style: PropTypes.oneOf(['checkList', 'buttonGrid'])
+```
 
-#### disabled
-> `boolean` | defaults to `false`
-
-#### error
-> `string` | defaults to `null`
-
-#### expand
-> `boolean` | defaults to `false`
-
-#### id
-> `string` | defaults to `""`
-
-#### label
-> `string` | defaults to `""`
-
-#### name
-> `string` | defaults to `null`
-
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-#### options
-> `array` | defaults to `null`
-#### selection
-> `object` | 
-> of shape:
-> `{ key: string,
->   label: string,
->   iconClass: string }` | 
->defaults to `null`
-#### style
-> `string` | one of `checkList`, `buttonGrid` | defaults to `null`
 
 <!-- ## [SelectButton](#SelectButton) -->
 <!-- ## [SuggestionField](#SuggestionField) -->
 ## [UploadField](#UploadField)
 ###props
-#### name
-> `string` | defaults to `null`
-#### icon
-> `boolean` | defaults to `true`
-#### disabled
-> `boolean` | defaults to `false`
-#### onChange
-> `function(event: syntheticEvent)` | defaults to `()=>{}`
-#### label
-> `string` | defaults to `""`
-#### multiple
-> `boolean` | defaults to `false`
-#### required
-> `boolean` | defaults to `false`
+```
+  disabled: PropTypes.bool,
+  label: PropTypes.string,
+  multiple: PropTypes.bool,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  required: PropTypes.bool,
+  showIcon: PropTypes.bool
+```
+
+##Development
+* To run FieldStack locally
+* Clone the repo
+* `npm install`
+* `npm run storybook`
+* Visit localhost:9001
+
+##Contibution
+* To build distribution run `npm run build`
+* Run `npm test` for test
+
 
 
 ## License

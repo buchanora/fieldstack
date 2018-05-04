@@ -105,19 +105,19 @@ SelectFieldSet.propTypes = {
     name: PropTypes.string,
     onChange: PropTypes.func,
     options: PropTypes.arrayOf(PropTypes.shape({
-      key: PropTypes.string,
-      label: PropTypes.string,
+      name: PropTypes.string,
+      value: PropTypes.string,
       iconClass: PropTypes.string
     })),
     selection: PropTypes.oneOfType([
       PropTypes.shape({
-        key: PropTypes.string,
-        label: PropTypes.string,
+        name: PropTypes.string,
+        value: PropTypes.string,
         iconClass: PropTypes.string
       }), 
       PropTypes.objectOf(PropTypes.shape({
-        key: PropTypes.string,
-        label: PropTypes.string,
+        name: PropTypes.string,
+        value: PropTypes.string,
         iconClass: PropTypes.string
       }))
     ]),

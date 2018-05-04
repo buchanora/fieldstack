@@ -1,9 +1,11 @@
 import React from 'react';
+import {PropTypes} from 'prop-types'
 
 export default function UploadField (props) {
 
   const { name = '',
           icon,
+          showIcon,
           disabled = false,
           onChange = ()=>{},
           label = '',
@@ -15,7 +17,7 @@ export default function UploadField (props) {
   return(
       <div className='uploadField-wrap'>
 
-          <label  className={icon ? 'upload-icon': 'upload-label'}
+          <label  className={icon || showIcon ? 'upload-icon': 'upload-label'}
                   htmlFor={name}>
                 { 
                         label
@@ -39,4 +41,14 @@ export default function UploadField (props) {
       </div>
   );
 
+}
+
+UploadField.propTypes = {
+        disabled: PropTypes.bool,
+        label: PropTypes.string,
+        multiple: PropTypes.bool,
+        name: PropTypes.string,
+        onChange: PropTypes.func,
+        required: PropTypes.bool,
+        showIcon: PropTypes.bool
 }

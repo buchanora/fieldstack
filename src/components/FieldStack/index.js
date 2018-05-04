@@ -116,12 +116,16 @@ class  FieldStack extends Component{
             return <TextField type={type} {...props}/>;
             break;
           case 'multilineText':
+          case 'multiLineText':
+          case 'multiline-text':
             return <MultiLineField {...props}/>;
             break;
           case 'editableText':
+          case 'editable-text':
             return <EditableTextField  {...props} />;
             break;
           case 'optionText':
+          case 'option-text':
             return <OptionTextField  {...props} options={options}/>;
             break;
           case 'date':
@@ -131,9 +135,11 @@ class  FieldStack extends Component{
             return <TimeField   {...props} />;
             break;
           case 'multiSelectFieldSet':
+          case 'multi-select':
             return <MultiSelectFieldSet {...props}  style={style} onChange={onToggleMultiSelect} options={options}/>;
             break;
           case 'selectFieldSet':
+          case 'select':
             return <SelectFieldSet  options={options} {...props}/>;
             break;
           case 'upload':

@@ -96,7 +96,7 @@ OptionTextField.propTypes = {
   onFocus: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  options: PropTypes.array,
+  options: PropTypes.arrayOf(PropTypes.string),
   required: PropTypes.bool,
   type: PropTypes.string,
   uncollapse: PropTypes.bool,
