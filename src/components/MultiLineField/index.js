@@ -27,7 +27,7 @@ export default function MultiLineField (props) {
     return(
         <FieldWrap  name={name}
                     disabled={disabled}
-                    dirty={value}
+                    dirty={value ? true : false}
                     error={error}
                     uncollapse={uncollapse}
                     label={label}

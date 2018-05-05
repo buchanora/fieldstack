@@ -5,20 +5,8 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
 ## Installation
 ```npm install --save fieldstack```
 
-## Styles
-
-Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's SCSS.
-
-### Sass Import
-```
-@import '~fieldstack/lib/style_config'
-@import '~fieldStack/lib/default_theme';
-@import '~fieldstack/lib/base_styles';
-```
-### Theming/Customisation
-To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style_config.scss` and override the variable values in it with your custom values.
-
-## Fordata API Example
+## Basic Usage
+### Fordata API Example
 ```
   import React, {Component} from 'react';
   import {FieldStack} from 'fieldstack';
@@ -120,7 +108,7 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
     ]
   }
 ```
-## Render Prop API Example
+### Render Prop API Example
 ```
   import React, {Component} from 'react';
   import {FieldStack, TextField, MultiLineField, FieldRow} from 'fieldstack';
@@ -172,12 +160,12 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
   }
 ```
 
-# Components
+## Components
 
-## [Fieldstack](#fieldstack)
+### [Fieldstack](#fieldstack)
 <!--- ### Example --->
 
-### Props
+#### Props
 ```
   activeFieldIndex: PropTypes.number,
   actions: PropTypes.object.isRequired,
@@ -192,12 +180,12 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
 
 
 
-## [TextField](#textField)
-## [DateField](#DateField)
-## [TimeField](#timeField)
+### [TextField](#textField)
+### [DateField](#DateField)
+### [TimeField](#timeField)
 <!--- ### Example --->
 
-### Props
+#### Props
 
 ```
   className: PropTypes.string,
@@ -221,8 +209,8 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
   value: PropTypes.string
 ```
 
-## [OptionTextField](#OptionTextField)
-### Props
+### [OptionTextField](#OptionTextField)
+#### Props
 ```
   className: PropTypes.string,
   disabled: PropTypes.bool,
@@ -246,8 +234,8 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
   value: PropTypes.string
 ```
 
-## [MultiLineField](#MultiLineField)
-### Props
+### [MultiLineField](#MultiLineField)
+#### Props
 ```
   name: PropTypes.string,
   disabled: PropTypes.bool,
@@ -271,8 +259,8 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
   size: PropTypes.number
 ```
 
-<!-- ## [DraftField](#DraftField)
-### Props
+<!-- ### [DraftField](#DraftField)
+#### Props
 ```
   value: PropTypes.object,
   error: PropTypes.string,
@@ -287,23 +275,22 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
   handleKeyCommand: PropTypes.func
 ``` -->
 
-## [FieldRow](#FieldRow)
-### Props
+### [FieldRow](#FieldRow)
+#### Props
 ```
   uncollapse: PropTypes.bool
 ```
 
 <!-- ## [RangeSelect](#RangeSelect) -->
-## [SelectFieldSet](#SelectFieldSet)
-## [MultiSelectFieldSet](#MultiSelectFieldSet)
-### Props
+### [SelectFieldSet](#SelectFieldSet)
+### [MultiSelectFieldSet](#MultiSelectFieldSet)
+#### Props
 ```
   className: PropTypes.string,
   disabled: PropTypes.bool,
   expand: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.string,
-  multiple: PropTypes.bool,
   name: PropTypes.string,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.shape({
@@ -329,8 +316,8 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
 
 <!-- ## [SelectButton](#SelectButton) -->
 <!-- ## [SuggestionField](#SuggestionField) -->
-## [UploadField](#UploadField)
-###props
+### [UploadField](#UploadField)
+#### props
 ```
   disabled: PropTypes.bool,
   label: PropTypes.string,
@@ -341,14 +328,32 @@ To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style
   showIcon: PropTypes.bool
 ```
 
-##Development
+## Styles
+
+Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's SCSS.
+
+### Sass Import
+With Webpack and Sass-loader:
+```
+@import '~fieldstack/lib/style_config'
+@import '~fieldStack/lib/default_theme';
+@import '~fieldstack/lib/base_styles';
+```
+`~` refereces node_modules directory
+
+### Theming/Customisation
+To customize theme colors, fonts etc, copy the contents of `fieldstack/lib/style_config.scss` and override the variable values in it with your custom values.
+
+
+
+## Development
 * To run FieldStack locally
 * Clone the repo
 * `npm install`
 * `npm run storybook`
 * Visit localhost:9001
 
-##Contibution
+## Contibution
 * To build distribution run `npm run build`
 * Run `npm test` for test
 

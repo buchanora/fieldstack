@@ -9,14 +9,14 @@ $field-label-elevation: $z2;
 
 $font-family: Roboto, Helvetica, sans-serif;
 
-$field-text-color: $color-dark-gray;
+$field-text-color: $color-dark-4;
 $field-text-color--disabled: $color-gray-0;
 $field-text-size: $font-size-default;
 
 $field-underline-color--active: $color-secondary-2;
 $field-underline-color: $color-gray-0;
 
-$field-label-color: $color-dark-4;
+$field-label-color: lighten($color-dark-4, 20);
 $field-label-color--dirty: $color-gray-0;
 $field-label-color--focus: $color-secondary-2;
 $field-label-color--error: $color-danger;
