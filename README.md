@@ -6,7 +6,7 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
 ```npm install --save fieldstack```
 
 ## Basic Usage
-### Fordata API Example
+### Formdata API Example
 ```
   import React, {Component} from 'react';
   import {FieldStack} from 'fieldstack';
@@ -35,7 +35,7 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
     }
   }
 
-  formData: {
+  const formData = {
     formTitle: 'Signup Form',
     fields: [
       {
@@ -83,7 +83,7 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
         name: 'phone',
         label: 'Phone Number',
         type: 'tel',
-      }
+      },
       {
         name: 'accountType',
         label: 'Account Type',
