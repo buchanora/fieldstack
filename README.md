@@ -89,10 +89,10 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
         label: 'Account Type',
         type: 'selectFieldSet',
         options: [
-          {key:'savings', label: 'Saving Account'},
-          {key:'current', label: 'Current Account'},
-          {key:'escrow', label: 'Escrow Account'},
-          {key:'dom', label: 'Dom Account'},
+          {value:'savings', name: 'Saving Account'},
+          {value:'current', name: 'Current Account'},
+          {value:'escrow', name: 'Escrow Account'},
+          {value:'dom', name: 'Dom Account'},
         ]
       },
       {
@@ -100,9 +100,9 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
         label: 'Addon Features',
         type: 'multiSelectFieldSet',
         options: [
-          {key:'social', label: 'Social Banking'},
-          {key:'lifestyle', label: 'Lifestyle Banking'},
-          {key:'mobile', label: 'Mobile Banking'}
+          {value:'social', name: 'Social Banking'},
+          {value:'lifestyle', name: 'Lifestyle Banking'},
+          {value:'mobile', name: 'Mobile Banking'}
         ]
       },
     ]

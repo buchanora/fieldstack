@@ -14,8 +14,7 @@ export default class SelectFieldSet extends Component{
       
     }
     render(){
-      const { name = '',
-              disabled,
+      const { disabled,
               selection,
               style,
               options,
@@ -36,15 +35,22 @@ export default class SelectFieldSet extends Component{
       const selectStyle = getStyle(style)
   
       const optionList = options.map( (option, index)=>{
+
+        const checked = ( _selection=>{
+          if(_selection[option.key || option.value]){
+            return true;
+          }
+          return false;
+        })(selection);
+
         switch (selectStyle) {
           case 'checkList':
             return (
               <CheckListItem  key={`check-${index}`}
                               checkerType='tick'
                               disabled={disabled}
-                              checked={selection[option.key || option.name]? true: false}
-                              optionFor={name}
-                              label={option.label || option.value}
+                              checked={checked}
+                              label={option.label || option.name}
                               onChange={onChange.bind(null, option)}/>
             )
             break;
@@ -53,10 +59,8 @@ export default class SelectFieldSet extends Component{
               <SelectButton   key={`check-${index}`}
                               iconClass={option.iconClass}
                               disabled={disabled}
-                              checked={selection[option.key || option.name] ? true : false}
-                              optionFor={name}
-                              name={option.name}
-                              label={option.label || option.value}
+                              checked={checked}
+                              label={option.label || option.name}
                               onChange={onChange.bind(null, option)}/>
               )
             break;
@@ -64,10 +68,8 @@ export default class SelectFieldSet extends Component{
             return (
               <SelectOption   key={`check-${index}`}
                               disabled={disabled}
-                              checked={selection[option.key || option.name] ? true : false}
-                              optionFor={name}
-                              name={option.name}
-                              label={option.label || option.value}
+                              checked={checked}
+                              label={option.label || option.name}
                               onChange={onChange.bind(null, option)}/>
             )
             break;
