@@ -1,6 +1,6 @@
 {
   "name": "fieldstack",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A declarative library for building beautiful, robust & flexible form-based interfaces",
   "main": "lib/index.js",
   "module": "es/index.js",
