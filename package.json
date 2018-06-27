@@ -9,11 +9,11 @@
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build": "node ./tools/build.js && npm run bundleScss",
+    "build": "node ./tools/build.js && npm run bundleScss && npm run bundleScss-legacy",
     "watch": "babel ./modules -d . --ignore __tests__ --watch",
     "prepublishOnly": "npm run build",
     "bundleScss": "bundle-scss -m \"./src/styles.manifest.scss\" -d \"./lib/styles.scss\"",
-    "buildScss": "scss-bundle -e ./src/styles.scss -d ./lib/bundle.scss",
+    "bundleScss-legacy": "bundle-scss -m \"./src/styles.manifest.scss\" -d \"./lib/base_styles.scss\"",
     "clean": "git clean -fdX .",
     "lint": "eslint src",
     "test": "jest",
@@ -79,7 +79,8 @@
     "scss-bundle": "^2.1.3",
     "semver": "^5.5.0",
     "style-loader": "^0.20.3",
-    "sugarss": "^1.0.1"
+    "sugarss": "^1.0.1",
+    "uglify-es": "^3.3.9"
   },
   "browserify": {
     "transform": [

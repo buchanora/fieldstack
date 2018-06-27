@@ -332,12 +332,11 @@ Fieldstack is the most robust [ReactJS](https://facebook.github.io/react) compon
 
 Fieldstack relies on SCSS for styling. Be sure to import the library's style sheets into your application's SCSS.
 
-### Sass Import
-With Webpack and Sass-loader:
+### Sass Imports
 ```
-@import '~fieldstack/lib/style_config'
-@import '~fieldStack/lib/default_theme';
-@import '~fieldstack/lib/base_styles';
+@import '~fieldStack/lib/theme';
+@import '~fieldstack/lib/config';
+@import '~fieldstack/lib/styles';
 ```
 `~` refereces node_modules directory
 
