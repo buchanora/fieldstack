@@ -1,42 +1,69 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import {MultiSelectFieldSet} from '../src/index';
+import Provider from '../.storybook/Provider';
 
 
 export default storiesOf('Multi-Select Field Set ', module)
   .add('As Checker', () => (
-    <MultiSelectFieldSet  label='My Date Field'
-                          options={options}
-                          onChange={action('change')}/>
+    <AsChecker/>
   ))
   .add('As Button', () => (
-    <MultiSelectFieldSet  label='My Date Field'  
-                          options={options}
-                          style='buttonGrid'
-                          onChange={action('change')}/>
+    <AsButton/>
   ))
   .add('As Dropdown', () => (
-    <MultiSelectFieldSet  label='My Date Field'
-                          style='checkList'
-                          options={options}
-                          onChange={action('change')}/>
-  ));
+    <AsDropdown/>
+  ))
 
   const options = [
     {
-      key: 'opt1',
-      label: 'Option One',
-      iconClass: false
+      value: 'opt1',
+      name: 'Option One',
+      iconClass: ''
     },
     {
-      key: 'opt2',
-      label: 'Option Two',
-      iconClass: false
+      value: 'opt2',
+      name: 'Option Two',
+      iconClass: ''
     },
     {
-      key: 'opt3',
-      label: 'Option Three',
-      iconClass: false
+      value: 'opt3',
+      name: 'Option Three',
+      iconClass: ''
     },
-  ]
+  ];
+
+  const AsChecker = Provider((props)=>{
+
+    return(
+      <MultiSelectFieldSet  label='My Date Field'
+                            name='date'
+                            selection={props.values.date}
+                            onChange={props.onChange.bind(null, 'date')}
+                            options={options}/>
+    );
+  });
+
+  const AsButton = Provider((props)=>{
+
+    return(
+      <MultiSelectFieldSet  label='My Date Field'
+                            name='date'
+                            selection={props.values.date}
+                            onChange={props.onChange.bind(null, 'date')}
+                            options={options}
+                            style='buttonGrid'/>
+    );
+  });
+
+  const AsDropdown = Provider((props)=>{
+
+    return(
+      <MultiSelectFieldSet  label='My Date Field'
+                            name='date'
+                            selection={props.values.date}
+                            onChange={props.onChange.bind(null, 'date')}
+                            options={options}
+                            style='checkList'/>
+    );
+  });

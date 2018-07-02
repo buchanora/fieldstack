@@ -17,6 +17,7 @@ export default class SelectFieldSet extends Component{
       const { disabled,
               selection,
               style,
+              multiple,
               options,
               onChange,
               label } = this.props;
@@ -32,17 +33,23 @@ export default class SelectFieldSet extends Component{
         return newStyle;
       }
 
-      const selectStyle = getStyle(style)
+      const selectStyle = getStyle(style);
   
       const optionList = options.map( (option, index)=>{
 
-        const checked = ( _selection=>{
-          if(_selection[option.key || option.value]){
-            return true;
+        let _checked;
+        if(multiple){
+          _checked = _selections=>{
+            return _selections[option.value]? true : false;
           }
-          return false;
-        })(selection);
+        }else{
+          _checked = _selection=>{
+            return _selection.value === option.value ? true : false;
+          };  
+        }
 
+        const checked = _checked(selection);
+        
         switch (selectStyle) {
           case 'checkList':
             return (
@@ -52,8 +59,7 @@ export default class SelectFieldSet extends Component{
                               checked={checked}
                               label={option.label || option.name}
                               onChange={onChange.bind(null, option)}/>
-            )
-            break;
+            );
           case 'buttonGrid':
             return (
               <SelectButton   key={`check-${index}`}
@@ -62,8 +68,7 @@ export default class SelectFieldSet extends Component{
                               checked={checked}
                               label={option.label || option.name}
                               onChange={onChange.bind(null, option)}/>
-              )
-            break;
+              );
           default:
             return (
               <SelectOption   key={`check-${index}`}
@@ -71,8 +76,7 @@ export default class SelectFieldSet extends Component{
                               checked={checked}
                               label={option.label || option.name}
                               onChange={onChange.bind(null, option)}/>
-            )
-            break;
+            );
         }
       })
   

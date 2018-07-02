@@ -9,7 +9,7 @@ const exec = (command, extraEnv) =>
     env: Object.assign({}, process.env, extraEnv)
   })
 
-console.log('Building CommonJS modules ...')
+console.log('Building CommonJS modules ...');
 
 exec('rm -rf lib');
 

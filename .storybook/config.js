@@ -1,4 +1,6 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
+// import Provider from './Provider';
+// addDecorator(Provider);
 
 function loadStories() {
   require('../stories/index.js');

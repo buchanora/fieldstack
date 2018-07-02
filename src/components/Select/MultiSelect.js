@@ -9,33 +9,19 @@ export default class MultiSelectFieldSet extends Component{
       
     }
   
-    componentWillMount(){
-      const {options=[], values={}} = this.props;
-      let optionState = {};
-      options.forEach((option)=>{
-        optionState[option.name] = values[option.name] || false
-      })
-      this.setState(optionState)
-      // console.log(values);
-    }
-    componentWillReceiveProps(newProps){
-      let options = {};
-      // console.log(newProps)
-      for (let value in newProps.values){
-        options[newProps.values[value]] = true
+    _handleCheckStateChange = (option)=>{
+      const selections = this.state;
+      if(selections[option.value]){
+        delete selections[option.value];
+      }else{
+        selections[option.value] = option
       }
-      this.setState(options)
-    }
-  
-    _handleCheckStateChange = (optionValue)=>{
-      this.setState((curState)=>({
-        [optionValue]: !curState[optionValue]
-      }))
-      this.props.onChange(optionValue)
+      this.setState(()=>selections);
+      this.props.onChange(selections);
     }
     render(){
       return (
-        <Select onChange={this._handleCheckStateChange} {...this.props}/>
+        <Select {...this.props} multiple  onChange={this._handleCheckStateChange} selection={this.props.selection || this.state}/>
       );
     }
   

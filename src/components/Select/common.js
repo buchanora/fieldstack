@@ -29,6 +29,7 @@ export function SelectOption(props){
             iconClass,
             checked,
             onChange} = props;
+    
   
     const disabledStateClass = disabled? 'select-button-disabled' : '';
     const checkedStateClass = checked? 'select-button-checked' : '';
